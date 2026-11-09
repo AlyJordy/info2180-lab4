@@ -1,5 +1,4 @@
 <?php
-
 $superheroes = [
   [
       "id" => 1,
@@ -63,10 +62,29 @@ $superheroes = [
   ], 
 ];
 
-?>
-
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+$query = isset($_GET["query"]) ? trim($_GET["query"]) : "";
+$query = htmlspecialchars($query, ENT_QUOTES, "UTF-8");
+    if ($query === "") {
+        echo "<ul>";
+        foreach ($superheroes as $superhero) {
+            echo "<li>" . htmlspecialchars($superhero["alias"], ENT_QUOTES, "UTF-8") . "</li>";
+        }
+        echo "</ul>";
+    } else {
+        $found = null;
+        foreach ($superheroes as $superhero) {
+            $name  = htmlspecialchars($superhero["name"], ENT_QUOTES, "UTF-8");
+            $alias = htmlspecialchars($superhero["alias"], ENT_QUOTES, "UTF-8");
+            if (strcasecmp($query, $name) === 0 || strcasecmp($query, $alias) === 0) {
+                $found = $superhero;
+                break;
+            }
+        }
+        if ($found) {
+            echo "<h3>" . htmlspecialchars($found["alias"], ENT_QUOTES, "UTF-8") . "</h3>";
+            echo "<h4>" . htmlspecialchars($found["name"], ENT_QUOTES, "UTF-8") . "</h4>";
+            echo "<p>" . htmlspecialchars($found["biography"], ENT_QUOTES, "UTF-8") . "</p>";
+        } else {
+            echo "<p class=\"error\">Superhero not found</p>";
+        }
+    }

@@ -1,0 +1,67 @@
+* { box-sizing: border-box; } /* Reset some default styles*/
+body {
+  margin: 0;
+  font-family: "Roboto", Arial, sans-serif;
+  background: #f0f0f0;
+  color: #1c2541;
+}
+header {
+  background: #4f88b5;
+  padding: 20px;
+  text-align: center;
+}
+h1 {
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.search-row { display: flex; gap: 8px; }
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 0.9rem;
+}
+button {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { background: #a31f1f; }
+h2 {
+  margin-top: 28px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 8px;
+}
+/* Styling for the result section */
+#result ul { font-size: 0.85rem; line-height: 1.5; }
+#result h3 { margin: 16px 0 2px; text-transform: uppercase; }
+#result h4 { margin: 0 0 8px; font-size: 0.8rem; text-transform: uppercase; }
+#result h4::before { content: "A.K.A "; }
+#result p { font-size: 0.85rem; line-height: 1.5; }
+
+.error { /* Error message styling */
+  color: #c62828;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
